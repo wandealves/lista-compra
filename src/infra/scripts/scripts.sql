@@ -14,14 +14,6 @@ CREATE TABLE usuarios (
 CREATE TABLE compras (
   id serial PRIMARY KEY,
   total decimal NOT NULL,
-  idUsuario int NOT null,
-  
-  FOREIGN KEY (idUsuario) REFERENCES usuarios (id)
-);
-
-CREATE TABLE compras (
-  id serial PRIMARY KEY,
-  total decimal NOT NULL,
   idUsuario integer NOT null,
   
   FOREIGN KEY (idUsuario) REFERENCES usuarios(id)

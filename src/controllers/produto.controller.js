@@ -1,8 +1,17 @@
+const repository = require("../infra/repositories/produto.repository");
+
 class ProdutoController {
   constructor() {}
 
-  all(request, response) {
-    response.json([{ name: "produto 01" }, { name: "produto 02" }]);
+  post(request, response) {
+    const { body } = request;
+
+    return response.status(201).send("Something broke!");
+  }
+
+  async all(request, response) {
+    const produtos = await repository.all();
+    return response.status(200).send(produtos);
   }
 }
 

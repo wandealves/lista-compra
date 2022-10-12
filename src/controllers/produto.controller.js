@@ -3,10 +3,12 @@ const repository = require("../infra/repositories/produto.repository");
 class ProdutoController {
   constructor() {}
 
-  post(request, response) {
+  async create(request, response) {
     const { body } = request;
 
-    return response.status(201).send("Something broke!");
+    await repository.add(body);
+
+    return response.status(201).send({ created: true });
   }
 
   async all(request, response) {

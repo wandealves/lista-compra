@@ -9,6 +9,15 @@ class ProdutoRepository {
     return rows;
   }
 
+  async add(data) {
+    const client = await pool.connect();
+
+    const sql = `insert into produtos (nome,valor,descricao) values($1,$2,$3)`;
+    const values = [data.nome, data.valor, data.descricao];
+
+    await client.query(sql, values);
+  }
+
   /*async add(data: ListaCompra) {
     const client = await pool.connect();
 

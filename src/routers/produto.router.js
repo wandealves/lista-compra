@@ -1,7 +1,5 @@
-module.exports = function (app) {
-  app.get("/produtos", function (request, response) {
-    console.log("Recebida requisição de teste.");
+const controller = require("../controllers/produto.controller");
 
-    response.send("Ok, Produtos");
-  });
+module.exports = function (app) {
+  app.get("/produtos", controller.all);
 };

@@ -26,8 +26,13 @@ export class LoginComponent implements OnInit {
         this.profileForm.value.senha || ''
       )
       .subscribe((response) => {
+        localStorage.removeItem('token');
         localStorage.setItem('token', response.token);
         this.router.navigate(['compras']);
       });
+  }
+
+  onRegistrar(){
+    this.router.navigate(['novo-usuario']);
   }
 }

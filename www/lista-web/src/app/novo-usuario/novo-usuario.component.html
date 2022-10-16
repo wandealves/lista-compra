@@ -1,14 +1,21 @@
-<div class="login">
-  <div class="login-item">
-    <label>E-mail</label>
-    <input type="email" class="login-value" />
+<form [formGroup]="profileForm">
+  <div class="login">
+    <div class="login-item">
+      <label>Nome</label>
+      <input formControlName="nome" type="text" class="login-value" />
+    </div>
+
+    <div class="login-item">
+      <label>E-mail</label>
+      <input formControlName="email" type="email" class="login-value" />
+    </div>
+
+    <div class="login-item">
+      <label>Senha</label>
+      <input formControlName="senha" type="password" class="login-value" />
+    </div>
+
+    <button class="botao" (click)="onRegistrar()">Registrar</button>
+
   </div>
-
-  <div class="login-item">
-    <label>Senha</label>
-    <input type="password" class="login-value" />
-  </div>
-
-  <button class="botao">Registrar</button>
-
-</div>
+</form>

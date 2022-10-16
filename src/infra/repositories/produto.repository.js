@@ -9,6 +9,16 @@ class ProdutoRepository {
     return rows;
   }
 
+  async getById(id) {
+    const client = await pool.connect();
+    const sql = "SELECT * FROM produtos WHERE id = $1";
+    const { rows } = await client.query(sql, [parseInt(id || 0)]);
+
+    if (rows && rows.length > 0) return rows[0];
+
+    return null;
+  }
+
   async add(data) {
     const client = await pool.connect();
 
@@ -18,32 +28,35 @@ class ProdutoRepository {
     await client.query(sql, values);
   }
 
-  /*async add(data: ListaCompra) {
+  async update(id, data) {
+    const produto = await this.getById(id);
+
+    if (!produto) return false;
+
     const client = await pool.connect();
 
-    const sql = `insert into listascompra (name) values($1)`;
-    const values = [data.name];
+    const sql = `update produtos set nome = $1,valor = $2, descricao = $3 where id = $4`;
+    const values = [data.nome, data.valor, data.descricao, id];
 
     await client.query(sql, values);
+
+    return true;
   }
 
-  async update(id: number, data: ListaCompra) {
+  async delete(id) {
+    const produto = await this.getById(id);
+
+    if (!produto) return false;
+
     const client = await pool.connect();
 
-    const sql = `update listascompra set name = $1 where id = $2`;
-    const values = [data.name, id];
-
-    await client.query(sql, values);
-  }
-
-  async remove(id: number) {
-    const client = await pool.connect();
-
-    const sql = `delete from listascompra where id = $1`;
+    const sql = `delete from produtos where id = $1`;
     const values = [id];
 
     await client.query(sql, values);
-  }*/
+
+    return true;
+  }
 }
 
 module.exports = new ProdutoRepository();

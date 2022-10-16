@@ -13,7 +13,8 @@ CREATE TABLE usuarios (
 
 CREATE TABLE compras (
   id serial PRIMARY KEY,
-  total decimal NOT NULL,
+  nome VARCHAR (150) NOT NULL,
+  total decimal NULL,
   idUsuario integer NOT null,
   
   FOREIGN KEY (idUsuario) REFERENCES usuarios(id)

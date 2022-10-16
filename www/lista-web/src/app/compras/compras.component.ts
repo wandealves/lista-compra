@@ -20,6 +20,10 @@ export class ComprasComponent implements OnInit {
     this.service.list().subscribe((response) => (this.list = response));
   }
 
+  onNovo() {
+    this.router.navigate([`nova-compra`]);
+  }
+
   onEditar(id: number) {
     this.router.navigate([`editar-compra/${id}`]);
   }

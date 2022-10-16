@@ -1,8 +1,10 @@
-<div class="compra">
-  <div class="item">
-    <label>Nome</label>
-    <input type="text">
-  </div>
+<form [formGroup]="profileForm">
+  <div class="compra">
+    <div class="item">
+      <label>Nome</label>
+      <input formControlName="nome" type="text">
+    </div>
 
-  <button>Salvar</button>
-</div>
+    <button (click)="onSalvar()">Salvar</button>
+  </div>
+</form>

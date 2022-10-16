@@ -20,7 +20,7 @@ import { LoginComponent } from './login/login.component';
       NovaCompraComponent,
       EditarCompraComponent,
       NovoUsuarioComponent,
-      LoginComponent
+      LoginComponent,
    ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ class CompraController {
   async create(request, response) {
     const { body } = request;
 
+    body.idUsuario = body.usuario.id;
+
     await repository.add(body);
 
     return response.status(201).send({ created: true });
@@ -33,7 +35,7 @@ class CompraController {
   }
 
   async all(request, response) {
-    const compras = await repository.all();
+    const compras = await repository.all(request.body.usuario.id);
     return response.status(200).send(compras);
   }
 

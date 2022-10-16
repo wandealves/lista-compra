@@ -1,10 +1,10 @@
 const pool = require("../db/dbconnector");
 
 class CompraRepository {
-  async all() {
+  async all(idUsuario) {
     const client = await pool.connect();
-    const sql = "SELECT * FROM compras";
-    const { rows } = await client.query(sql);
+    const sql = "SELECT * FROM compras where idUsuario = $1";
+    const { rows } = await client.query(sql, [idUsuario]);
 
     return rows;
   }

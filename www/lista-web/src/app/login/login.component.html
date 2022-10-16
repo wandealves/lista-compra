@@ -1,0 +1,17 @@
+<div class="login">
+  <form [formGroup]="profileForm">
+    <div class="item">
+      <label>E-mail</label>
+      <input formControlName="email" type="email" class="login-value" />
+    </div>
+
+    <div class="item">
+      <label>Senha</label>
+      <input formControlName="senha" type="password" class="login-value" />
+    </div>
+  </form>
+  <div class="botao-container">
+    <button class="botao" (click)="onEntrar()">Entrar</button>
+    <button class="botao">registrar</button>
+  </div>
+</div>

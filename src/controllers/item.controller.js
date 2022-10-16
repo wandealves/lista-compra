@@ -38,9 +38,9 @@ class ItemController {
   }
 
   async show(request, response) {
-    const { id } = request.params;
-    const compra = await repository.getById(id);
-    return response.status(200).send(compra);
+    const { compraId } = request.params;
+    const compras = await repository.getByCompra(compraId);
+    return response.status(200).send(compras);
   }
 }
 

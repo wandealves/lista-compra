@@ -11,21 +11,29 @@ class CompraRepository {
 
   async getById(id) {
     const client = await pool.connect();
-    const sql = "SELECT * FROM compras WHERE id = $1";
-    const { rows } = await client.query(sql, [parseInt(id || 0)]);
+    try {
+      const sql = "SELECT * FROM compras WHERE id = $1";
+      const { rows } = await client.query(sql, [parseInt(id || 0)]);
 
-    if (rows && rows.length > 0) return rows[0];
+      if (rows && rows.length > 0) return rows[0];
 
-    return null;
+      return null;
+    } finally {
+      client.release();
+    }
   }
 
   async add(data) {
     const client = await pool.connect();
 
-    const sql = `insert into compras (nome,total,idUsuario) values($1,$2,$3)`;
-    const values = [data.nome, 0, data.idUsuario];
+    try {
+      const sql = `insert into compras (nome,total,idUsuario) values($1,$2,$3)`;
+      const values = [data.nome, 0, data.idUsuario];
 
-    await client.query(sql, values);
+      await client.query(sql, values);
+    } finally {
+      client.release();
+    }
   }
 
   async update(id, data) {
@@ -35,12 +43,16 @@ class CompraRepository {
 
     const client = await pool.connect();
 
-    const sql = `update compras set nome = $1 where id = $2`;
-    const values = [data.nome, id];
+    try {
+      const sql = `update compras set nome = $1 where id = $2`;
+      const values = [data.nome, id];
 
-    await client.query(sql, values);
+      await client.query(sql, values);
 
-    return true;
+      return true;
+    } finally {
+      client.release();
+    }
   }
 
   async delete(id) {
@@ -50,12 +62,16 @@ class CompraRepository {
 
     const client = await pool.connect();
 
-    const sql = `delete from compras where id = $1`;
-    const values = [id];
+    try {
+      const sql = `delete from compras where id = $1`;
+      const values = [id];
 
-    await client.query(sql, values);
+      await client.query(sql, values);
 
-    return true;
+      return true;
+    } finally {
+      client.release();
+    }
   }
 }
 

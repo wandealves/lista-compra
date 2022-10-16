@@ -1,0 +1,60 @@
+.compra{
+  height: 100vh;
+  margin: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item{
+  display: flex;
+  gap: 10px;
+}
+
+input{
+  width: 400px;
+}
+
+select{
+  width: 300px;
+}
+button{
+  width: 150px;
+  height: 30px;
+
+  background-color: green;
+  color: white;
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.item{
+  cursor: pointer;
+}
+
+.item:hover {
+  color: grey;
+}
